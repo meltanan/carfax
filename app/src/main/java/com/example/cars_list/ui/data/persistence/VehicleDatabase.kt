@@ -7,7 +7,7 @@ import com.example.cars_list.ui.data.dao.Dao
 import com.example.cars_list.ui.data.entity.ImageConverter
 import com.example.cars_list.ui.data.entity.Vehicle
 
-@Database(entities = [Vehicle::class], version = 1)
+@Database(entities = [Vehicle::class], version = 2)
 @TypeConverters(ImageConverter::class)
 abstract class VehicleDatabase : RoomDatabase() {
     abstract fun vehicleDao(): Dao

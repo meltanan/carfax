@@ -20,8 +20,13 @@ class VehicleAdapter(private val vehicleList: List<Vehicle>): RecyclerView.Adapt
     }
     @SuppressLint("CheckResult")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(holder.itemView.context).load(vehicleList[position].images.medium).into(holder.imageView)
-        holder.detailsTextView.text = vehicleList[position].make
+        Glide.with(holder.itemView.context).load(vehicleList[position].images.firstPhoto.medium).into(holder.imageView)
+        //holder.detailsTextView.text = vehicleList[position].make
+        val details = "${vehicleList[position].year} ${vehicleList[position].make} ${vehicleList[position].model} ${vehicleList[position].trim}" +
+                "\n$${vehicleList[position].listPrice} | ${vehicleList[position].mileage} k mi" +
+                "\n${vehicleList[position].dealer.city}, ${vehicleList[position].dealer.state}"
+        holder.detailsTextView.text = details
+
     }
 
 
@@ -30,7 +35,7 @@ class VehicleAdapter(private val vehicleList: List<Vehicle>): RecyclerView.Adapt
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var imageView: ImageView = itemView.findViewById(R.id.imageView)
         var detailsTextView: TextView = itemView.findViewById(R.id.vehicleInfoTextView)
-        var button: Button = itemView.findViewById(R.id.button)
+        //var button: Button = itemView.findViewById(R.id.button)
 
     }
 
