@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -35,11 +36,16 @@ class VehicleAdapter(private val vehicleList: List<Vehicle>, private val listene
             listener.onCallClick(vehicleList[position].dealer.phone)
 
         }
+
+        holder.cardView.setOnClickListener{
+            listener.onItemSelected()
+        }
     }
 
     override fun getItemCount() = vehicleList.size
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        var cardView: CardView = itemView.findViewById(R.id.cardView)
         var imageView: ImageView = itemView.findViewById(R.id.imageView)
         var detailsTextView: TextView = itemView.findViewById(R.id.vehicleInfoTextView)
         var button: Button = itemView.findViewById(R.id.button)
