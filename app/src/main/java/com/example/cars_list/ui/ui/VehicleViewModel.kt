@@ -1,18 +1,30 @@
 package com.example.cars_list.ui.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import com.example.cars_list.ui.network.api.API
-import com.example.cars_list.ui.repository.VehicleRepository
+import com.example.cars_list.ui.data.entity.Listings
+import com.example.cars_list.ui.repository.Api
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class VehicleViewModel() : ViewModel() {
-//    val getVehicles = repository.getRestaurants().asLiveData()
-//    suspend fun wow() {
-//        val w: API
-//
-//    }
 
+    fun fetchAndLoadVehicles() {
+        Api.retrofitService.getVehicles().enqueue(object: Callback<Listings>{
+            override fun onResponse(call: Call<Listings>, response: Response<Listings>) {
 
+                if (response.isSuccessful){
+                    Log.d("demo", response.body().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<Listings>, t: Throwable) {
+                Log.d("demo", t.message.toString())
+            }
+
+        })
+    }
 
 }

@@ -4,8 +4,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 import org.jetbrains.annotations.NotNull
 
+
+data class Listings (
+    //val vehicle: ArrayList<Vehicle>,
+    val listings: List<Vehicle>
+        )
 @Entity(tableName = "vehicles")
 data class Vehicle (
     @PrimaryKey val id: String,
@@ -30,9 +36,9 @@ data class Vehicle (
 data class Image (
     val baseUrl: String,
     val firstPhoto: FirstPhoto,
-    val large: ArrayList<String>,
-    val medium: ArrayList<String>,
-    val small: ArrayList<String>
+//    val large: AList<String>,
+//    val medium: ArrayList<String>,
+//    val small: ArrayList<String>
 )
 
 data class FirstPhoto (
@@ -40,6 +46,11 @@ data class FirstPhoto (
     val medium : String,
     val small  : String,
     )
+
+data class Property(
+    @SerializedName("id")
+    val id: Int,
+    val title: String = "", val description: String = "", val image: String = "", val horizontal: Boolean = false, val data: List<Property>? = null, var selected: Boolean? = false)
 
 class ImageConverter {
 
