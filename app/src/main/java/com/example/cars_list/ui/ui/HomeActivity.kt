@@ -40,6 +40,7 @@ class HomeActivity : AppCompatActivity(), SelectListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
         requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){ if (it) makePhoneCall() }
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -49,6 +50,10 @@ class HomeActivity : AppCompatActivity(), SelectListener {
             Log.d("demo", it.toString())
             recyclerView.adapter = it.listings?.let { it1 -> VehicleAdapter(it1, this) }
 
+        }
+
+        viewModel.viewModelScope.launch {
+             viewModel.fetchAndLoadVehicles()
         }
     }
 
@@ -69,5 +74,6 @@ class HomeActivity : AppCompatActivity(), SelectListener {
     }
 
     private fun phoneCallPermissionGranted() =  ContextCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
+
 
 }
