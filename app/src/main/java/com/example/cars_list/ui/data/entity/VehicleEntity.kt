@@ -50,7 +50,8 @@ data class FirstPhoto (
 
 data class Dealer (
     val city: String,
-    val state: String
+    val state: String,
+    val phone: String
     )
 
 data class Property(
