@@ -1,5 +1,7 @@
 package com.example.cars_list.ui
 
+import android.content.Context
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.add
@@ -11,4 +13,8 @@ inline fun <reified T : Fragment> FragmentActivity.addFragment(addToBackStack: B
         if (addToBackStack) addToBackStack(null)
         add<T>(R.id.fragmentContainerView)
     }
+}
+
+fun Context.showToast(message: String, length: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(this, message, length).show()
 }

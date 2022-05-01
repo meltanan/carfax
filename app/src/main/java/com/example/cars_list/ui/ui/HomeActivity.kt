@@ -27,6 +27,8 @@ import com.example.cars_list.ui.SelectListener
 import com.example.cars_list.ui.addFragment
 import com.example.cars_list.ui.data.entity.Listings
 import com.example.cars_list.ui.repository.Api
+import com.example.cars_list.ui.showToast
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,9 +51,8 @@ class HomeActivity : AppCompatActivity(), SelectListener {
         viewModel.viewModelScope.launch {
             viewModel.fetchAndLoadVehicles()
         }
-        viewModel.getVehicles?.observe(this){
+        viewModel.getVehicles?.observe(this) {
             recyclerView.adapter = VehicleAdapter(it, this)
-
         }
     }
 
