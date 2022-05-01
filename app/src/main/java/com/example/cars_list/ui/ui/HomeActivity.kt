@@ -13,6 +13,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -21,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars_list.R
 import com.example.cars_list.ui.SelectListener
+import com.example.cars_list.ui.addFragment
 import com.example.cars_list.ui.data.entity.Listings
 import com.example.cars_list.ui.data.entity.Property
 import com.example.cars_list.ui.repository.Api
@@ -33,7 +37,8 @@ import java.util.jar.Manifest
 class HomeActivity : AppCompatActivity(), SelectListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
-   private var phoneNumber = ""
+    private var phoneNumber = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val viewModel = ViewModelProvider(this).get(VehicleViewModel::class.java)
@@ -63,6 +68,11 @@ class HomeActivity : AppCompatActivity(), SelectListener {
             makePhoneCall()
         else
             requestPermissionLauncher.launch(android.Manifest.permission.CALL_PHONE)
+
+    }
+
+    override fun onItemSelected() {
+        addFragment<VehicleDetailsFragment>(true)
 
     }
 
