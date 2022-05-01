@@ -39,25 +39,26 @@ class HomeActivity : AppCompatActivity(), SelectListener {
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
     private var phoneNumber = ""
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         viewModel = ViewModelProvider(this).get(VehicleViewModel::class.java)
 
-        requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){ if (it) makePhoneCall() }
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        setUpUi()
 
         viewModel.vehicles.observe(this){
-            Log.d("demo", it.toString())
             recyclerView.adapter = it.listings?.let { it1 -> VehicleAdapter(it1, this) }
-
         }
 
         viewModel.viewModelScope.launch {
              viewModel.fetchAndLoadVehicles()
         }
+    }
+
+    private fun setUpUi() {
+        requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){ if (it) makePhoneCall() }
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onCallClick(phoneNumber: String) {
@@ -66,7 +67,6 @@ class HomeActivity : AppCompatActivity(), SelectListener {
             makePhoneCall()
         else
             requestPermissionLauncher.launch(android.Manifest.permission.CALL_PHONE)
-
     }
 
     override fun onItemSelected(index: Int) {
@@ -82,6 +82,5 @@ class HomeActivity : AppCompatActivity(), SelectListener {
     }
 
     private fun phoneCallPermissionGranted() =  ContextCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
-
 
 }

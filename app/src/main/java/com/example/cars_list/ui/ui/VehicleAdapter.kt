@@ -21,14 +21,15 @@ class VehicleAdapter(private val vehicleList: List<Vehicle>, private val listene
     }
     @SuppressLint("CheckResult")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         Glide.with(holder.itemView.context).load(vehicleList[position].images.firstPhoto.medium).into(holder.imageView)
         val yearAndOtehr = "${vehicleList[position].year} ${vehicleList[position].make} ${vehicleList[position].model} ${vehicleList[position].trim}"
         val details = "\n$${vehicleList[position].currentPrice} | ${vehicleList[position].mileage} k mi" + "\n${vehicleList[position].dealer.city}, ${vehicleList[position].dealer.state}"
+
         holder.yearAndOtherTextView.text = yearAndOtehr
         holder.priceAndOtherTextView.text = details
         holder.button.setOnClickListener {
             listener.onCallClick(vehicleList[position].dealer.phone)
-
         }
 
         holder.cardView.setOnClickListener {
@@ -46,6 +47,4 @@ class VehicleAdapter(private val vehicleList: List<Vehicle>, private val listene
         var button: Button = itemView.findViewById(R.id.call_dealer_button)
 
     }
-
-
 }
