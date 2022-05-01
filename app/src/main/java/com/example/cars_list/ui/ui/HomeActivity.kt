@@ -35,21 +35,20 @@ import retrofit2.Response
 import java.util.jar.Manifest
 
 class HomeActivity : AppCompatActivity(), SelectListener {
+    private lateinit var viewModel: VehicleViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
     private var phoneNumber = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModel = ViewModelProvider(this).get(VehicleViewModel::class.java)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        viewModel = ViewModelProvider(this).get(VehicleViewModel::class.java)
 
         requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){ if (it) makePhoneCall() }
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        //recyclerView.adapter = VehicleAdapter(list)
 
         viewModel.vehicles.observe(this){
             Log.d("demo", it.toString())
@@ -71,9 +70,9 @@ class HomeActivity : AppCompatActivity(), SelectListener {
 
     }
 
-    override fun onItemSelected() {
+    override fun onItemSelected(index: Int) {
+        viewModel.selectedVehicleIndex = index
         addFragment<VehicleDetailsFragment>(true)
-
     }
 
     private fun makePhoneCall(){

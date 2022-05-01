@@ -19,6 +19,7 @@ import retrofit2.Response
 class VehicleViewModel() : ViewModel() {
 
     var vehicles = MutableLiveData<Listings>()
+    var selectedVehicleIndex = 0
 
     fun fetchAndLoadVehicles(){
         Api.retrofitService.getVehicles().enqueue(object: Callback<Listings>{

@@ -32,13 +32,13 @@ class VehicleAdapter(private val vehicleList: List<Vehicle>, private val listene
 
         holder.detailsTextView.text = details
 
-        holder.button.setOnClickListener{
+        holder.button.setOnClickListener {
             listener.onCallClick(vehicleList[position].dealer.phone)
 
         }
 
-        holder.cardView.setOnClickListener{
-            listener.onItemSelected()
+        holder.cardView.setOnClickListener {
+            listener.onItemSelected(position)
         }
     }
 

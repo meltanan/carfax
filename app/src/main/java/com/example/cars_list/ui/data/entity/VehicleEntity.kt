@@ -7,7 +7,6 @@ import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import org.jetbrains.annotations.NotNull
 
-
 data class Listings (
     //val vehicle: ArrayList<Vehicle>,
     val listings: List<Vehicle>?
@@ -27,10 +26,10 @@ data class Vehicle (
     val trim: String,
     val exteriorColor: String,
     val interiorColor: String,
-    val drivetype: String,
+    val driveType: String,
     val engine: String,
     val transmission: String,
-    val bodytype: String,
+    val bodyType: String,
     val dealer: Dealer
 )
 
@@ -53,11 +52,6 @@ data class Dealer (
     val state: String,
     val phone: String
     )
-
-data class Property(
-    @SerializedName("id")
-    val id: Int,
-    val title: String = "", val description: String = "", val image: String = "", val horizontal: Boolean = false, val data: List<Property>? = null, var selected: Boolean? = false)
 
 class ImageConverter {
 
