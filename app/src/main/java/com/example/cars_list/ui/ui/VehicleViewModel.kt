@@ -5,8 +5,8 @@ import androidx.lifecycle.*
 import com.example.cars_list.ui.App
 import com.example.cars_list.ui.Roomdb
 import com.example.cars_list.ui.data.entity.Listings
-import com.example.cars_list.ui.data.entity.Vehicle
 import com.example.cars_list.ui.repository.Api
+import com.example.cars_list.ui.repository.VehicleRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -14,15 +14,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+class VehicleViewModel : ViewModel() {
 
-class VehicleViewModel() : ViewModel() {
-
-    val dao = Roomdb.getAppDatabase(App.getAppContext())?.vehicleDao()
+   private val dao = Roomdb.getAppDatabase(App.getAppContext())?.vehicleDao()
+   private val repository = VehicleRepository()
 
     var vehicles = MutableLiveData<Listings>()
     var selectedVehicleIndex = 0
 
-    suspend fun fetchAndLoadVehicles(){
+    suspend fun fetchAndLoadVehicles() = withContext(Dispatchers.IO){
         Api.retrofitService.getVehicles().enqueue(object: Callback<Listings>{
             override fun onResponse(call: Call<Listings>, response: Response<Listings>) {
                 if (response.isSuccessful){
@@ -41,5 +41,5 @@ class VehicleViewModel() : ViewModel() {
         })
     }
 
-    fun getData() = dao?.getAllVehicles()?.asLiveData()
+    val getVehicles = repository.getAllVehicles
 }

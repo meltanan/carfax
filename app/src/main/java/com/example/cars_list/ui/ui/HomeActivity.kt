@@ -46,16 +46,12 @@ class HomeActivity : AppCompatActivity(), SelectListener {
 
         setUpUi()
 
-        viewModel.vehicles.observe(this){
-            recyclerView.adapter = it.listings?.let { it1 -> VehicleAdapter(it1, this) }
-        }
-
         viewModel.viewModelScope.launch {
-             viewModel.fetchAndLoadVehicles()
+            viewModel.fetchAndLoadVehicles()
         }
+        viewModel.getVehicles?.observe(this){
+            recyclerView.adapter = VehicleAdapter(it, this)
 
-        viewModel.getData()?.observe(this){
-            Log.d("#############", it.toString())
         }
     }
 

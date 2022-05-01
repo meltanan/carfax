@@ -32,9 +32,9 @@ class VehicleDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.vehicles.observe(this){
-            it.listings?.get(viewModel.selectedVehicleIndex)?.let { vehicle ->
-            setUpUi(vehicle)
+        viewModel.getVehicles?.observe(this){
+            it.get(viewModel.selectedVehicleIndex).let { vehicle ->
+                setUpUi(vehicle)
             }
         }
     }

@@ -1,9 +1,6 @@
 package com.example.cars_list.ui.repository
 
-import android.app.Application
-import androidx.room.Room
 import com.example.cars_list.ui.data.entity.Listings
-import com.example.cars_list.ui.data.persistence.VehicleDatabase
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
