@@ -26,7 +26,6 @@ import com.example.cars_list.R
 import com.example.cars_list.ui.SelectListener
 import com.example.cars_list.ui.addFragment
 import com.example.cars_list.ui.data.entity.Listings
-import com.example.cars_list.ui.data.entity.Property
 import com.example.cars_list.ui.repository.Api
 import kotlinx.coroutines.launch
 import retrofit2.Call

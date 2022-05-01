@@ -26,10 +26,10 @@ data class Vehicle (
     val trim: String,
     val exteriorColor: String,
     val interiorColor: String,
-    val driveType: String,
+    val drivetype: String,
     val engine: String,
     val transmission: String,
-    val bodyType: String,
+    val bodytype: String,
     val dealer: Dealer
 )
 
