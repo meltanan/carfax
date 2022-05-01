@@ -8,7 +8,7 @@ import com.example.cars_list.ui.data.entity.Vehicle
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface Dao {
+interface VehicleDao {
     @Query("SELECT * from vehicles")
     fun getAllVehicles(): Flow<List<Vehicle>>
 

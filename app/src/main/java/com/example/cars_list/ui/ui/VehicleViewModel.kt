@@ -1,10 +1,9 @@
 package com.example.cars_list.ui.ui
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.cars_list.ui.App
+import com.example.cars_list.ui.Roomdb
 import com.example.cars_list.ui.data.entity.Listings
 import com.example.cars_list.ui.data.entity.Vehicle
 import com.example.cars_list.ui.repository.Api
@@ -18,42 +17,29 @@ import retrofit2.Response
 
 class VehicleViewModel() : ViewModel() {
 
+    val dao = Roomdb.getAppDatabase(App.getAppContext())?.vehicleDao()
+
     var vehicles = MutableLiveData<Listings>()
     var selectedVehicleIndex = 0
 
-    fun fetchAndLoadVehicles(){
+    suspend fun fetchAndLoadVehicles(){
         Api.retrofitService.getVehicles().enqueue(object: Callback<Listings>{
             override fun onResponse(call: Call<Listings>, response: Response<Listings>) {
                 if (response.isSuccessful){
-                    Log.d("demo", response.body().toString())
                     vehicles.value = response.body()
+
+                    viewModelScope.launch {
+                        response.body()?.listings?.let { dao?.insetVehicles(it) }
+                    }
                 }
             }
 
             override fun onFailure(call: Call<Listings>, t: Throwable) {
-                Log.d("demo", t.message.toString())
+                Log.e("Error:", t.message.toString())
             }
 
         })
     }
 
-//     fun fetchAndLoadVehicles2(){
-//
-//                Api.retrofitService.getVehicles().enqueue(object: Callback<Listings>{
-//                    override fun onResponse(call: Call<Listings>, response: Response<Listings>) {
-//                        if (response.isSuccessful){
-//                            Log.d("demo", response.body().toString())
-//                            vehicles.postValue(response)
-//                            wow.postValue("Mohed")
-//                        }
-//                    }
-//
-//                    override fun onFailure(call: Call<Listings>, t: Throwable) {
-//                        Log.d("demo", t.message.toString())
-//                    }
-//
-//                })
-//
-//    }
-
+    fun getData() = dao?.getAllVehicles()?.asLiveData()
 }

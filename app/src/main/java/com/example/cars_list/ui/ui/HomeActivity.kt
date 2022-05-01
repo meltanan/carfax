@@ -53,6 +53,10 @@ class HomeActivity : AppCompatActivity(), SelectListener {
         viewModel.viewModelScope.launch {
              viewModel.fetchAndLoadVehicles()
         }
+
+        viewModel.getData()?.observe(this){
+            Log.d("#############", it.toString())
+        }
     }
 
     private fun setUpUi() {
@@ -76,7 +80,7 @@ class HomeActivity : AppCompatActivity(), SelectListener {
 
     private fun makePhoneCall(){
         val intent = Intent(Intent.ACTION_CALL)
-        val number = "tel: +$phoneNumber"
+        val number = "tel: $phoneNumber"
         intent.data = Uri.parse(number)
         startActivity(intent)
     }

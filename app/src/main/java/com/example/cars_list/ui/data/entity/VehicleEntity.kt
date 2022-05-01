@@ -19,7 +19,6 @@ data class Vehicle (
     val make: String,
     val imageCount: Int,
     val images: Image,
-    val listPrice: Int,
     val mileage: Int,
     val model: String,
     val currentPrice: Int,
@@ -30,7 +29,8 @@ data class Vehicle (
     val engine: String,
     val transmission: String,
     val bodytype: String,
-    val dealer: Dealer
+    val dealer: Dealer,
+    val fuel: String,
 )
 
 data class Image (
