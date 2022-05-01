@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textViewBold">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="textView">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="callDealerButton">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#2196F3</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:text">Call Dealer</item>
+    </style>
+</resources>

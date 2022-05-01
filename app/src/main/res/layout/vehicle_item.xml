@@ -19,9 +19,8 @@
             android:id="@+id/imageView"
             android:layout_width="393dp"
             android:layout_height="200dp"
-
-            app:layout_constraintBottom_toTopOf="@id/vehicleInfoTextView"
-            app:layout_constraintEnd_toEndOf="@id/vehicleInfoTextView"
+            app:layout_constraintBottom_toTopOf="@id/year_and_other_text"
+            app:layout_constraintEnd_toEndOf="@id/year_and_other_text"
             app:layout_constraintHorizontal_bias="0.555"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,20 +28,35 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/vehicleInfoTextView"
+            android:id="@+id/year_and_other_text"
+            style="@style/textViewBold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
             android:text="TextView"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.634" />
+            app:layout_constraintVertical_bias="0.84" />
 
+        <TextView
+            android:id="@+id/price_and_other_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="TextView"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            style="@style/textView"
+            app:layout_constraintBottom_toTopOf="@+id/year_and_other_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.654" />
 
         <View
             android:layout_width="match_parent"
@@ -57,20 +71,17 @@
             app:layout_constraintVertical_bias="0.872" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/call_dealer_button"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
-            android:text="Call Dealer"
-            android:textColor="#2196F3"
-            android:backgroundTint="@color/white"
+            style="@style/callDealerButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vehicleInfoTextView"
+            app:layout_constraintTop_toBottomOf="@id/year_and_other_text"
             app:layout_constraintTop_toTopOf="parent"
             android:background="?android:attr/selectableItemBackground"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

@@ -8,7 +8,7 @@
     tools:context=".ui.ui.HomeActivity">
 
     <ImageView
-        android:id="@+id/vehicleDetailsImageView"
+        android:id="@+id/details_image_view"
         android:layout_width="0dp"
         android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,71 +21,90 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/vehicleDetailsMainInfoTextView"
+        android:id="@+id/details_year_and_other_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="10dp"
         android:text="TextView"
+        style="@style/textViewBold"
+        android:textColor="@android:color/tertiary_text_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleDetailsImageView"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintTop_toBottomOf="@+id/details_image_view"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/details_price_and_mileage_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        style="@style/textViewBold"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_year_and_other_text"
+        app:layout_constraintVertical_bias="0.32" />
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_centerVertical="true"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="35dp"
         android:background="#24737373"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleDetailsMainInfoTextView"
+        app:layout_constraintTop_toBottomOf="@+id/details_year_and_other_text"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/vehicleInfo"
+        android:id="@+id/text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
         android:text="Vehicle Info"
         android:textColor="@color/black"
         android:textStyle="bold"
+        style="@style/textView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/vehicleDetailsHeaderTextView"
+        android:id="@+id/details_header_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="10dp"
         android:text="TextView"
+        style="@style/textView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleInfo"
+        app:layout_constraintTop_toBottomOf="@+id/text_view"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/vehicleDetailsTextView"
+        android:id="@+id/details_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="10dp"
         android:text="TextView"
+        style="@style/textView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.694"
-        app:layout_constraintStart_toStartOf="@id/vehicleDetailsHeaderTextView"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleInfo"
+        app:layout_constraintHorizontal_bias="0.587"
+        app:layout_constraintStart_toStartOf="@id/details_header_text"
+        app:layout_constraintTop_toBottomOf="@+id/text_view"
         app:layout_constraintVertical_bias="0.0" />
 
 
