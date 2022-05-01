@@ -12,7 +12,6 @@ class App : Application() {
     }
 
     companion object {
-        // Method to get app context. Will be used when need to interact with UI from a non-ui class.
         lateinit var appInstance: App
         fun getAppContext(): Context = appInstance.applicationContext
     }
